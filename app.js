@@ -20,7 +20,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin: 'http://localhost:3000',
 }));
 
 // подключаемся к серверу mongo
