@@ -13,7 +13,7 @@
 
 
 ## Домен
-api.gss.students.nomoreparties.xyz
+https://api.gss.students.nomoreparties.xyz
 
 
 ## Используемые роуты:
@@ -40,3 +40,6 @@ npm i # установить все пакеты
 npm run start # запускает сервер
 npm run dev # запускает сервер с hot-reload
 ```
+
+## Frontend сервиса
+https://github.com/Nail-Ya/react-mesto-auth
