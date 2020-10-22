@@ -20,7 +20,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(cors({
-  origin: 'https://gss.students.nomoreparties.xyz/sign-in',
+  origin: 'https://gss.students.nomoreparties.xyz',
 }));
 
 // подключаемся к серверу mongo
