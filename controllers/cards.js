@@ -9,7 +9,7 @@ const getCards = (req, res, next) => {
     .then((cards) => {
       res
         .status(200)
-        .send({ data: cards });
+        .send(cards);
     })
 
     .catch(next);
@@ -23,7 +23,7 @@ const createCard = (req, res, next) => {
     .then((card) => {
       res
         .status(200)
-        .send({ data: card });
+        .send(card);
     })
 
     .catch((error) => {
@@ -47,7 +47,7 @@ const removeCard = (req, res, next) => {
         .then((cardForRemove) => {
           res
             .status(200)
-            .send({ data: cardForRemove });
+            .send(cardForRemove);
         })
 
         .catch(next);
@@ -76,7 +76,7 @@ const likeCard = (req, res, next) => {
         throw new NotFoundError('На сервере нет карточки с таким id');
       }
 
-      res.send({ data: userIdWhoLike });
+      res.send(userIdWhoLike);
     })
 
     .catch(() => {
@@ -98,7 +98,7 @@ const dislikeCard = (req, res, next) => {
         throw new NotFoundError('На сервере нет карточки с таким id');
       }
 
-      res.send({ data: userIdWhoDislike });
+      res.send(userIdWhoDislike);
     })
 
     .catch(() => {

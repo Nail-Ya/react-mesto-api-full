@@ -38,12 +38,16 @@ const getUserById = (req, res, next) => {
 
 const createUser = (req, res, next) => {
   const {
-    name, about, avatar, email, password,
+    email, password,
   } = req.body;
 
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
-      name, about, avatar, email, password: hash,
+      name: 'Здесь должно быть ваше имя',
+      about: 'Напишите ваш род деятельности',
+      avatar: 'https://kartiny-na-dereve.ru/wp-content/uploads/2017/11/006-camera-portrait-mode-400x400.png.pagespeed.ce_.i7MrB7AqMV-400x400.png',
+      email,
+      password: hash,
     })
 
       .then((user) => {
@@ -66,10 +70,10 @@ const createUser = (req, res, next) => {
 };
 
 const updateUser = (req, res, next) => {
-  const { name, about, avatar } = req.body;
+  const { name, about } = req.body;
 
   User.findByIdAndUpdate(req.user._id,
-    { name, about, avatar },
+    { name, about },
     {
       new: true,
       runValidators: true,
@@ -81,7 +85,7 @@ const updateUser = (req, res, next) => {
       }
       res
         .status(200)
-        .send({ data: updatedUser });
+        .send(updatedUser);
     })
 
     .catch((error) => {
@@ -110,7 +114,7 @@ const updateAvatar = (req, res, next) => {
       }
       res
         .status(200)
-        .send({ data: updatedUserAvatar });
+        .send(updatedUserAvatar);
     })
 
     .catch((error) => {
@@ -136,13 +140,7 @@ const login = (req, res, next) => {
         { expiresIn: '7d' },
       );
       res
-
-        // .cookie('jwt', token, {
-        //   maxAge: 3600000 * 24 * 7,
-        //   httpOnly: true,
-        //   sameSite: true,
-        // })
-
+        .status(200)
         .send({ token });
     })
 
@@ -161,7 +159,7 @@ const getUserInfo = (req, res, next) => {
       }
       res
         .status(200)
-        .send({ data: { _id: userById._id, email: userById.email } });
+        .send(userById)
     })
 
     .catch(() => {

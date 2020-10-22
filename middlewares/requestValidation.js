@@ -29,20 +29,16 @@ const validateId = celebrate({
 // схема валидации пользователя при его создании
 const validateUser = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30),
-    about: Joi.string().required().min(2).max(20),
-    avatar: Joi.string().custom(urlValidation).required(),
     email: Joi.string().required().email(),
     password: Joi.string().required().min(5),
-  }),
+  }).unknown(true),
 });
-// TODO: добавить для того чтобы он воспринимал поля если их нет
+
 // схема валидации данных пользователя при обновлении
 const validateUserUpdate = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
     about: Joi.string().required().min(2).max(20),
-    // avatar: Joi.string().custom(urlValidation).required(),
   }),
 });
 

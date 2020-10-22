@@ -20,7 +20,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3001',
 }));
 
 // подключаемся к серверу mongo
@@ -35,7 +35,7 @@ app.use(cookieParser());
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 10000,
 });
 
 app.use(limiter);
@@ -75,7 +75,7 @@ app.use(errors());
 app.use((err, req, res, next) => {
   // если у ошибки нет статуса, выставляем 500
   const { statusCode = 500, message } = err;
-console.log(err);
+  console.log(err);
   res
     .status(statusCode)
     .send({
