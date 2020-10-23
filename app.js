@@ -73,6 +73,7 @@ app.use(errors());
 app.use((err, req, res, next) => {
   // если у ошибки нет статуса, выставляем 500
   const { statusCode = 500, message } = err;
+  // eslint-disable-next-line no-console
   console.log(err);
   res
     .status(statusCode)
@@ -87,5 +88,6 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   // Если всё работает, консоль покажет, какой порт приложение слушает
+  // eslint-disable-next-line no-console
   console.log(`App listening on port ${PORT}`);
 });

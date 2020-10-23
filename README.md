@@ -41,5 +41,9 @@ npm run start # запускает сервер
 npm run dev # запускает сервер с hot-reload
 ```
 
-## Frontend сервиса
+## Frontend сервиса на github
 https://github.com/Nail-Ya/react-mesto-auth
+
+
+## Ссылка на frontend, который использует данный сервер
+https://gss.students.nomoreparties.xyz/

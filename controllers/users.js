@@ -53,7 +53,14 @@ const createUser = (req, res, next) => {
       .then((user) => {
         res
           .status(200)
-          .send({ data: user });
+          .send({
+            data: {
+              name: user.name,
+              about: user.about,
+              avatar: user.avatar,
+              email: user.email,
+            },
+          });
       })
 
       .catch((error) => {
@@ -159,7 +166,7 @@ const getUserInfo = (req, res, next) => {
       }
       res
         .status(200)
-        .send(userById)
+        .send(userById);
     })
 
     .catch(() => {
